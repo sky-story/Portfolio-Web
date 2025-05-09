@@ -54,5 +54,3 @@ python app.py
 ```
 
 5. Open your browser and navigate to `http://localhost:5000`
-
-## Project Structure 
