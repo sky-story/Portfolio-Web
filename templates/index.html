@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Ningbo Li{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="text-center mb-5">
+            <div class="profile-image-container mb-4">
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}" 
+                     alt="Ningbo Li" 
+                     class="profile-image">
+            </div>
+            <h1 class="display-4 mb-3">Ningbo Li</h1>
+            <h2 class="h4 text-muted mb-4">Graduate Student in Technology Innovation</h2>
+            <p class="lead">Researching Embodied AI and Object-Goal Navigation</p>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">About Me</h3>
+                <p class="card-text">
+                    I am a dual-degree Master's student at Tsinghua University and the University of Washington, 
+                    specializing in Embodied AI with a focus on object-goal navigation. 
+                    With a strong foundation in measurement and control technology from Southwest Jiaotong University, 
+                    I am passionate about developing intelligent navigation systems that can understand and interact with their environment effectively.
+                </p>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Education</h3>
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <strong>University of Washington</strong><br>
+                        Master of Technology Innovation<br>
+                        <small class="text-muted">2023 - Present</small>
+                    </li>
+                    <li class="mb-3">
+                        <strong>Tsinghua University</strong><br>
+                        Master in Data Science and Information Technology<br>
+                        <small class="text-muted">2023 - Present</small>
+                    </li>
+                    <li>
+                        <strong>Southwest Jiaotong University</strong><br>
+                        Bachelor's in Measurement and Control Technology<br>
+                        <small class="text-muted">2019 - 2023</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

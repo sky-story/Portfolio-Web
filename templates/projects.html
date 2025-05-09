@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Projects - Ningbo Li{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h1 class="display-4 mb-4">Projects</h1>
+        
+        <!-- Object-Goal Navigation Project -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Multi-Strategy Decision Approach for Object-Goal Navigation</h3>
+                <h4 class="card-subtitle mb-3 text-muted">Master's Research Project</h4>
+                <p class="card-text">
+                    A novel multi-strategy architecture for object-goal navigation with scene-centric focus:
+                </p>
+                <ul class="list-unstyled">
+                    <li>• Designed and implemented a three-layer strategy architecture: exploration decision, scene traversal, and scene transition</li>
+                    <li>• Integrated Matterport3D-trained scene recognition model for dynamic strategy adjustment</li>
+                    <li>• Developed probabilistic graph modeling for semantic associations between target objects and scenes</li>
+                    <li>• Implemented scene consistency detection function and parallel environment strategy switching</li>
+                </ul>
+                <div class="mt-3">
+                    <span class="badge bg-primary me-2">PyTorch</span>
+                    <span class="badge bg-primary me-2">Habitat</span>
+                    <span class="badge bg-primary me-2">Python</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Intelligent Voice Interface Project -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">Intelligent Voice Interface for Robotic Systems</h3>
+                <h4 class="card-subtitle mb-3 text-muted">Course Project - Physical AI Team</h4>
+                <p class="card-text">
+                    Led the Physical AI team in a collaborative robotics project, working with specialized teams in Navigation, 
+                    Perception, Manipulation, and Hardware/Software integration to develop an intelligent voice control system.
+                </p>
+                <ul class="list-unstyled">
+                    <li>• Designed and implemented an end-to-end voice processing pipeline using OpenAI's transcriber and GPT-4o 
+                        for natural language understanding</li>
+                    <li>• Developed service-based communication architecture with structured JSON protocols for robust 
+                        interaction with the Orchestration Team</li>
+                    <li>• Created real-time status monitoring and UI feedback system for robot state visualization</li>
+                    <li>• Successfully integrated with four specialized teams (Navigation, Perception, Manipulation, HW/SW) 
+                        to enable comprehensive robot control capabilities</li>
+                </ul>
+                <div class="mt-3">
+                    <span class="badge bg-primary me-2">OpenAI API</span>
+                    <span class="badge bg-primary me-2">ROS2</span>
+                    <span class="badge bg-primary me-2">System Integration</span>
+                    <span class="badge bg-primary me-2">Team Leadership</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MoodTune Project -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">MoodTune - AI-Powered Music Experience</h3>
+                <h4 class="card-subtitle mb-3 text-muted">Course Project</h4>
+                <p class="card-text">
+                    Developed an innovative web application that combines facial emotion recognition with music recommendation 
+                    to create personalized listening experiences:
+                </p>
+                <ul class="list-unstyled">
+                    <li>• Engineered a real-time facial emotion detection system using face-api.js, achieving accurate 
+                        emotion classification in browser environments</li>
+                    <li>• Designed and implemented a robust music recommendation engine leveraging Spotify's Web API, 
+                        creating dynamic playlists based on emotional states</li>
+                    <li>• Built a resilient system architecture with comprehensive error handling for API failures 
+                        and rate limiting, ensuring uninterrupted user experience</li>
+                    <li>• Developed an intuitive user interface with real-time emotion feedback and seamless 
+                        music playback controls</li>
+                </ul>
+                <div class="mt-3">
+                    <span class="badge bg-primary me-2">face-api.js</span>
+                    <span class="badge bg-primary me-2">Spotify API</span>
+                    <span class="badge bg-primary me-2">Web Development</span>
+                    <span class="badge bg-primary me-2">UI/UX Design</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
