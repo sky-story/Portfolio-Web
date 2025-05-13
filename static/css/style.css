@@ -29,13 +29,46 @@ body {
 
 .card {
     border: none;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
     margin-bottom: 2rem;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
+}
+
+.contact-info {
+    margin-top: 1.5rem;
+}
+
+.contact-info a {
+    color: #666;
+    transition: color 0.3s ease;
+    margin: 0 10px;
+}
+
+.contact-info a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.contact-info i {
+    margin-right: 5px;
+}
+
+.publication-item {
+    margin-bottom: 1.5rem;
+}
+
+.publication-item a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.publication-item a:hover {
+    color: #0056b3;
 }
 
 .footer {
@@ -49,5 +82,10 @@ body {
     .profile-image-container {
         width: 150px;
         height: 150px;
+    }
+    
+    .contact-info a {
+        display: block;
+        margin: 5px 0;
     }
 } 

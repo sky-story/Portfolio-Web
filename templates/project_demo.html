@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ project.title }} - Demo{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h1 class="mb-4">{{ project.title }}</h1>
+        <p>{{ project.overview }}</p>
+        {% if video_url %}
+        <div class="mb-4">
+            <video width="100%" controls>
+                <source src="{{ video_url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        {% endif %}
+        <div class="row">
+            {% for img in image_urls %}
+            <div class="col-md-6 mb-3">
+                <img src="{{ img }}" class="img-fluid rounded" alt="Project image">
+            </div>
+            {% endfor %}
+        </div>
+        {% if project.github_url %}
+        <a href="{{ project.github_url }}" class="btn btn-primary mt-3" target="_blank">View on GitHub</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

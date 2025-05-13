@@ -7,79 +7,108 @@
     <div class="col-md-10 offset-md-1">
         <h1 class="display-4 mb-4">Projects</h1>
         
-        <!-- Object-Goal Navigation Project -->
-        <div class="card mb-4">
+        <!-- Autonomous Sorting Robot -->
+        <div class="card mb-4 project-card">
             <div class="card-body">
-                <h3 class="card-title">Multi-Strategy Decision Approach for Object-Goal Navigation</h3>
-                <h4 class="card-subtitle mb-3 text-muted">Master's Research Project</h4>
-                <p class="card-text">
-                    A novel multi-strategy architecture for object-goal navigation with scene-centric focus:
-                </p>
-                <ul class="list-unstyled">
-                    <li>• Designed and implemented a three-layer strategy architecture: exploration decision, scene traversal, and scene transition</li>
-                    <li>• Integrated Matterport3D-trained scene recognition model for dynamic strategy adjustment</li>
-                    <li>• Developed probabilistic graph modeling for semantic associations between target objects and scenes</li>
-                    <li>• Implemented scene consistency detection function and parallel environment strategy switching</li>
-                </ul>
-                <div class="mt-3">
-                    <span class="badge bg-primary me-2">PyTorch</span>
-                    <span class="badge bg-primary me-2">Habitat</span>
-                    <span class="badge bg-primary me-2">Python</span>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3 class="card-title">Autonomous Sorting and Transport Robot</h3>
+                        <p class="card-text">
+                            Built a mobile robot for shape-color based sorting using dual STM32 MCUs, integrating camera, 
+                            PID tracking, and encoder-based locomotion. Early application of embodied intelligence for 
+                            perception-action coordination.
+                        </p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-2">STM32</span>
+                            <span class="badge bg-primary me-2">Computer Vision</span>
+                            <span class="badge bg-primary me-2">PID Control</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <a href="{{ url_for('project_demo', project_key='autonomous-sorting-robot') }}" 
+                           class="btn btn-primary">View Demo</a>
+                        <a href="https://github.com/sky-story/Autonomous-Sorting-and-Transport-Robot" 
+                           class="btn btn-outline-dark ms-2" target="_blank">GitHub</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Intelligent Voice Interface Project -->
-        <div class="card mb-4">
+        <!-- Snake Robot -->
+        <div class="card mb-4 project-card">
             <div class="card-body">
-                <h3 class="card-title">Intelligent Voice Interface for Robotic Systems</h3>
-                <h4 class="card-subtitle mb-3 text-muted">Course Project - Physical AI Team</h4>
-                <p class="card-text">
-                    Led the Physical AI team in a collaborative robotics project, working with specialized teams in Navigation, 
-                    Perception, Manipulation, and Hardware/Software integration to develop an intelligent voice control system.
-                </p>
-                <ul class="list-unstyled">
-                    <li>• Designed and implemented an end-to-end voice processing pipeline using OpenAI's transcriber and GPT-4o 
-                        for natural language understanding</li>
-                    <li>• Developed service-based communication architecture with structured JSON protocols for robust 
-                        interaction with the Orchestration Team</li>
-                    <li>• Created real-time status monitoring and UI feedback system for robot state visualization</li>
-                    <li>• Successfully integrated with four specialized teams (Navigation, Perception, Manipulation, HW/SW) 
-                        to enable comprehensive robot control capabilities</li>
-                </ul>
-                <div class="mt-3">
-                    <span class="badge bg-primary me-2">OpenAI API</span>
-                    <span class="badge bg-primary me-2">ROS2</span>
-                    <span class="badge bg-primary me-2">System Integration</span>
-                    <span class="badge bg-primary me-2">Team Leadership</span>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3 class="card-title">Path and Gait Planning for Multi-Locomotion Snake Robot</h3>
+                        <p class="card-text">
+                            Developed a modular snake-like robot with multiple gaits (serpentine, rolling, undulation) 
+                            for environment-adaptive motion planning. Implemented SLAM-based localization and 2D 
+                            occupancy grid mapping using ROS, Gmapping, and LiDAR.
+                        </p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-2">ROS</span>
+                            <span class="badge bg-primary me-2">SLAM</span>
+                            <span class="badge bg-primary me-2">LiDAR</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <a href="{{ url_for('project_demo', project_key='snake-robot') }}" 
+                           class="btn btn-primary">View Demo</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- MoodTune Project -->
-        <div class="card mb-4">
+        <!-- Defect Detection -->
+        <div class="card mb-4 project-card">
             <div class="card-body">
-                <h3 class="card-title">MoodTune - AI-Powered Music Experience</h3>
-                <h4 class="card-subtitle mb-3 text-muted">Course Project</h4>
-                <p class="card-text">
-                    Developed an innovative web application that combines facial emotion recognition with music recommendation 
-                    to create personalized listening experiences:
-                </p>
-                <ul class="list-unstyled">
-                    <li>• Engineered a real-time facial emotion detection system using face-api.js, achieving accurate 
-                        emotion classification in browser environments</li>
-                    <li>• Designed and implemented a robust music recommendation engine leveraging Spotify's Web API, 
-                        creating dynamic playlists based on emotional states</li>
-                    <li>• Built a resilient system architecture with comprehensive error handling for API failures 
-                        and rate limiting, ensuring uninterrupted user experience</li>
-                    <li>• Developed an intuitive user interface with real-time emotion feedback and seamless 
-                        music playback controls</li>
-                </ul>
-                <div class="mt-3">
-                    <span class="badge bg-primary me-2">face-api.js</span>
-                    <span class="badge bg-primary me-2">Spotify API</span>
-                    <span class="badge bg-primary me-2">Web Development</span>
-                    <span class="badge bg-primary me-2">UI/UX Design</span>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3 class="card-title">Vision-Based Surface Defect Detection with Edge Deployment</h3>
+                        <p class="card-text">
+                            Developed a real-time defect detection system for aluminum parts, integrating image acquisition, 
+                            live inference, and display modules. Fine-tuned YOLOv5 model, deployed to edge devices using 
+                            TensorRT, achieving 2× speedup in inference.
+                        </p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-2">YOLOv5</span>
+                            <span class="badge bg-primary me-2">TensorRT</span>
+                            <span class="badge bg-primary me-2">Edge Computing</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <a href="{{ url_for('project_demo', project_key='defect-detection') }}" 
+                           class="btn btn-primary">View Demo</a>
+                        <a href="https://github.com/sky-story/Vision-Based-Surface-Defect-Detection-with-Edge-Deployment" 
+                           class="btn btn-outline-dark ms-2" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bionic Scorpion -->
+        <div class="card mb-4 project-card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3 class="card-title">Bionic Scorpion Sampling Robot</h3>
+                        <p class="card-text">
+                            Built control software on STM32 for a scorpion-inspired sampling robot with LiDAR and 
+                            motor modules. 2nd Prize (Top 10%) in Sichuan Province at China's Mechanical Innovation 
+                            Design Competition.
+                        </p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-2">STM32</span>
+                            <span class="badge bg-primary me-2">LiDAR</span>
+                            <span class="badge bg-primary me-2">Robotics</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <a href="{{ url_for('project_demo', project_key='bionic-scorpion') }}" 
+                           class="btn btn-primary">View Demo</a>
+                        <a href="https://github.com/sky-story/Bionic-Scorpion-Sampling-Robot" 
+                           class="btn btn-outline-dark ms-2" target="_blank">GitHub</a>
+                    </div>
                 </div>
             </div>
         </div>
