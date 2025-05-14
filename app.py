@@ -6,11 +6,13 @@ app = Flask(__name__)
 projects = {
     "autonomous-sorting-robot": {
         "title": "Autonomous Sorting and Transport Robot",
-        "overview": "A mobile robot for shape-color based sorting using dual STM32 MCUs, integrating camera, PID tracking, and encoder-based locomotion. Early application of embodied intelligence for perception-action coordination. 2nd Prize (Top 5%) at China National Mechanical Engineering Innovation Competition (Logistics Track).",
+        "overview": "An autonomous mobile robot designed for shape and color-based sorting tasks. Powered by dual STM32 MCUs, it features an integrated camera system, PID tracking, and encoder-based locomotion. This project represents an early application of embodied intelligence, demonstrating effective perception-action coordination in real-world scenarios.",
         "media_folder": "autonomous-sorting-robot",
         "images": [
             "images/1.jpg",
-            "images/2.jpg"
+            "images/2.jpg",
+            "images/3.png",
+            "images/4.png"
         ],
         "video": "videos/demo.mp4",
         "github_url": "https://github.com/sky-story/Autonomous-Sorting-and-Transport-Robot"
@@ -37,12 +39,15 @@ projects = {
     },
     "bionic-scorpion": {
         "title": "Bionic Scorpion Sampling Robot",
-        "overview": "Built control software on STM32 for a scorpion-inspired sampling robot with LiDAR and motor modules. 2nd Prize (Top 10%) in Sichuan Province at China's Mechanical Innovation Design Competition.",
+        "overview": "Built control software on STM32 for a scorpion-inspired sampling robot with LiDAR and motor modules.",
         "media_folder": "bionic-scorpion",
         "images": [
-            "images/1.jpg"
+            "images/1.png",
+            "images/2.png",
+            "images/3.gif",
+            "images/4.gif",
+            "images/5.gif"
         ],
-        "video": "videos/demo.mp4",
         "github_url": "https://github.com/sky-story/Bionic-Scorpion-Sampling-Robot"
     }
 }
@@ -54,7 +59,17 @@ def project_demo(project_key):
         abort(404)
     image_urls = [url_for('static', filename=f'projects/{project["media_folder"]}/{img}') for img in project["images"]]
     video_url = url_for('static', filename=f'projects/{project["media_folder"]}/{project["video"]}') if project.get("video") else None
-    return render_template('project_demo.html', project=project, image_urls=image_urls, video_url=video_url)
+    
+    # 根据项目类型选择不同的模板
+    template_map = {
+        "autonomous-sorting-robot": "autonomous_robot_demo.html",
+        "snake-robot": "snake_robot_demo.html",
+        "defect-detection": "defect_detection_demo.html",
+        "bionic-scorpion": "bionic_scorpion_demo.html"
+    }
+    
+    template = template_map.get(project_key, "project_template.html")
+    return render_template(template, project=project, image_urls=image_urls, video_url=video_url)
 
 @app.route('/')
 def index():

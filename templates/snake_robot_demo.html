@@ -1,0 +1,366 @@
+{% extends "project_template.html" %}
+
+{% block styles %}
+{{ super() }}
+<style>
+/* summary卡片 */
+.project-summary {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+.project-summary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2c3e50);
+}
+.summary-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.summary-icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.summary-icon i {
+    font-size: 2rem;
+    color: #3498db;
+}
+.summary-text {
+    flex-grow: 1;
+}
+.summary-text p {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: justify;
+}
+.summary-text p strong {
+    color: #3498db;
+    font-weight: 600;
+}
+@media(max-width:768px) {
+    .summary-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    .summary-text p {
+        text-align: center;
+    }
+}
+
+/* 成就展示卡片 */
+.achievement-section {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.achievement-section h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+.achievement-badge {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    border-radius: 8px;
+    margin: 1rem 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+.achievement-badge:hover {
+    transform: scale(1.05);
+}
+.achievement-badge h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+.achievement-badge p {
+    font-size: 0.95rem;
+    opacity: 0.95;
+    margin: 0;
+}
+
+/* 技术亮点卡片 */
+.tech-features {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.tech-features h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.tech-feature-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+.tech-feature-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+.tech-feature-item:hover {
+    transform: translateY(-5px);
+}
+.tech-feature-item i {
+    color: #3498db;
+    font-size: 1.3rem;
+    margin-top: 2px;
+}
+.tech-feature-item span {
+    color: #34495e;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+@media(max-width:768px) {
+    .tech-feature-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 3D建模与实物图 */
+.snake-image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto 32px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.snake-image-item {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    background: #fff;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 36px;
+    position: relative;
+}
+.snake-image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+.snake-image-caption {
+    text-align: center;
+    font-size: 1rem;
+    color: #34495e;
+    font-weight: 500;
+    margin-top: 8px;
+    background: none;
+    position: static;
+    padding: 0;
+    line-height: 1.3;
+    width: 100%;
+}
+
+/* 步态演示GIF */
+.snake-gait-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto 32px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.snake-gait-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.snake-gait-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+.snake-gait-caption {
+    text-align: center;
+    font-size: 0.98rem;
+    color: #2c3e50;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* 功能演示视频 */
+.snake-video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto 32px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.snake-video-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.snake-video-item video {
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    background: #000;
+    object-fit: contain;
+}
+.snake-video-caption {
+    text-align: center;
+    font-size: 1rem;
+    color: #2c3e50;
+    margin-top: 8px;
+    font-weight: 500;
+}
+@media (max-width: 900px) {
+    .snake-image-grid, .snake-gait-grid, .snake-video-grid {
+        grid-template-columns: 1fr;
+    }
+    .snake-video-item video {
+        max-width: 100%;
+    }
+}
+</style>
+{% endblock %}
+
+{% block project_summary %}
+<div class="project-summary">
+    <div class="summary-content">
+        <div class="summary-icon">
+            <i class="fas fa-dna"></i>
+        </div>
+        <div class="summary-text">
+            <p>
+                Developed a modular snake-like robot with multiple gaits (lateral undulation, sidewinding, vertical undulation, lateral rolling) for environment-adaptive motion planning. Implemented SLAM-based localization and 2D occupancy grid mapping using ROS, Gmapping, and LiDAR for real-time navigation.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block project_content %}
+<!-- 成就展示 -->
+<div class="achievement-section">
+    <h3>Achievement</h3>
+    <div class="achievement-badge">
+        <h4>National-level Student Research Training Program Project</h4>
+        <p>Recognized as a key project for undergraduate research and innovation in China</p>
+    </div>
+</div>
+
+<!-- 技术亮点 -->
+<div class="tech-features">
+    <h3>Technical Highlights</h3>
+    <ul class="tech-feature-list">
+        <li class="tech-feature-item"><i class="fas fa-dice-d6"></i><span><strong>Multi-gait Locomotion:</strong> Supports lateral undulation, sidewinding, vertical undulation, and lateral rolling gaits.</span></li>
+        <li class="tech-feature-item"><i class="fas fa-cogs"></i><span><strong>Modular Design:</strong> Each joint is independently controlled for flexible movement.</span></li>
+        <li class="tech-feature-item"><i class="fas fa-map"></i><span><strong>SLAM & Mapping:</strong> Real-time mapping and localization with LiDAR and ROS Gmapping.</span></li>
+        <li class="tech-feature-item"><i class="fas fa-shield-alt"></i><span><strong>Obstacle Avoidance:</strong> Autonomous obstacle detection and avoidance using sensor fusion.</span></li>
+    </ul>
+</div>
+
+<!-- 3D建模与实物图 -->
+<div class="snake-image-grid">
+    <div class="snake-image-item">
+        <img src="{{ url_for('static', filename='projects/snake-robot/images/4.png') }}" alt="Joint 3D Model">
+        <div class="snake-image-caption">Joint 3D Model</div>
+    </div>
+    <div class="snake-image-item">
+        <img src="{{ url_for('static', filename='projects/snake-robot/images/5.png') }}" alt="Head 3D Model">
+        <div class="snake-image-caption">Head 3D Model</div>
+    </div>
+    <div class="snake-image-item">
+        <img src="{{ url_for('static', filename='projects/snake-robot/images/6.jpg') }}" alt="Robot Physical Photo">
+        <div class="snake-image-caption">Physical Robot</div>
+    </div>
+</div>
+
+<!-- 步态演示GIF -->
+<div class="snake-gait-grid">
+    <div class="snake-gait-item">
+        <img src="{{ url_for('static', filename='projects/snake-robot/images/1.GIF') }}" alt="Lateral Undulation Gait">
+        <div class="snake-gait-caption">Lateral Undulation Gait</div>
+    </div>
+    <div class="snake-gait-item">
+        <img src="{{ url_for('static', filename='projects/snake-robot/images/2.GIF') }}" alt="Sidewinding Gait">
+        <div class="snake-gait-caption">Sidewinding Gait</div>
+    </div>
+    <div class="snake-gait-item">
+        <img src="{{ url_for('static', filename='projects/snake-robot/images/3.GIF') }}" alt="Vertical Undulation Gait">
+        <div class="snake-gait-caption">Vertical Undulation Gait</div>
+    </div>
+    <div class="snake-gait-item">
+        <img src="{{ url_for('static', filename='projects/snake-robot/images/4.GIF') }}" alt="Lateral Rolling Gait">
+        <div class="snake-gait-caption">Lateral Rolling Gait</div>
+    </div>
+</div>
+
+<!-- 功能演示视频 -->
+<div class="snake-video-grid">
+    <div class="snake-video-item">
+        <video src="{{ url_for('static', filename='projects/snake-robot/videos/1.mp4') }}" controls></video>
+        <div class="snake-video-caption">Obstacle Avoidance Demo</div>
+    </div>
+    <div class="snake-video-item">
+        <video src="{{ url_for('static', filename='projects/snake-robot/videos/2.mp4') }}" controls></video>
+        <div class="snake-video-caption">SLAM Mapping Demo</div>
+    </div>
+</div>
+{% endblock %} 

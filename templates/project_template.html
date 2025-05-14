@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}{{ project.title }} - Demo{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<style>
+/* 重置可能影响布局的样式 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 项目容器 */
+.project-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background: #ffffff;
+}
+
+.project-title {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #3498db;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+/* 视频容器 */
+.video-container {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    background: #000;
+    position: relative;
+}
+
+.video-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+/* GitHub按钮 */
+.github-button {
+    display: inline-block !important;
+    padding: 12px 24px !important;
+    background: #2c3e50 !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    margin-top: 2rem !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+}
+
+.github-button:hover {
+    background: #34495e !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15) !important;
+    color: white !important;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="project-container">
+    <div class="project-title">
+        <h1>{{ project.title }}</h1>
+    </div>
+    
+    {% block project_summary %}{% endblock %}
+    
+    {% block project_content %}{% endblock %}
+
+    {% if project.github_url %}
+    <div class="text-center">
+        <a href="{{ project.github_url }}" class="github-button" target="_blank">
+            <i class="fab fa-github me-2"></i>View on GitHub
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %} 

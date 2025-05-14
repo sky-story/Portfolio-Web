@@ -1,0 +1,356 @@
+{% extends "project_template.html" %}
+
+{% block styles %}
+{{ super() }}
+<style>
+/* 成就展示 */
+.achievement-section {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.achievement-section h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.achievement-badge {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    border-radius: 8px;
+    margin: 1rem 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.achievement-badge:hover {
+    transform: scale(1.05);
+}
+
+.achievement-badge h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-badge p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* 项目概述 */
+.project-summary {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-summary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2c3e50);
+}
+
+.summary-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.summary-icon {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.summary-icon i {
+    font-size: 2rem;
+    color: #3498db;
+}
+
+.summary-text {
+    flex-grow: 1;
+}
+
+.summary-text p {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: justify;
+}
+
+.summary-text p strong {
+    color: #3498db;
+    font-weight: 600;
+}
+
+@media(max-width:768px) {
+    .summary-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .summary-text p {
+        text-align: center;
+    }
+}
+
+/* 项目描述 */
+.project-description {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.description-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.description-header h3 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.description-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.description-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.description-item:hover {
+    transform: translateY(-5px);
+}
+
+.description-item h4 {
+    color: #3498db;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.description-item h4 i {
+    font-size: 1.2rem;
+}
+
+.description-item p {
+    color: #34495e;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media(max-width:768px) {
+    .description-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 图片网格布局 */
+.image-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 30px !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+    background: #f8f9fa !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+}
+
+.image-item {
+    position: relative !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    width: 100% !important;
+    height: 300px !important;
+    background: #fff !important;
+}
+
+.image-item:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.image-caption {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.7)) !important;
+    color: white !important;
+    padding: 15px !important;
+    text-align: center !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+}
+
+.image-item:hover .image-caption {
+    opacity: 1 !important;
+}
+
+.project-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    border-radius: 12px !important;
+    display: block !important;
+    transition: transform 0.3s ease !important;
+    background: #fff !important;
+}
+
+.image-item:hover .project-image {
+    transform: scale(1.05) !important;
+}
+
+@media(max-width:768px) {
+    .image-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        padding: 15px !important;
+    }
+    
+    .image-caption {
+        opacity: 1 !important;
+    }
+}
+
+/* 大视频框样式 */
+.video-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.video-container video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    background: #000;
+    object-fit: contain;
+}
+</style>
+{% endblock %}
+
+{% block project_summary %}
+<!-- 项目概述 -->
+<div class="project-summary">
+    <div class="summary-content">
+        <div class="summary-icon">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="summary-text">
+            <p>{{ project.overview }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block project_content %}
+<!-- 大视频框 -->
+<div class="video-container">
+    <video src="{{ video_url }}" controls></video>
+</div>
+
+<!-- 成就展示 -->
+<div class="achievement-section">
+    <h3>Achievement</h3>
+    <div class="achievement-badge">
+        <h4>2nd Prize</h4>
+        <p>Top 5% at China National Mechanical Engineering Innovation Competition (Logistics Track)</p>
+    </div>
+</div>
+
+<!-- 项目描述 -->
+<div class="project-description">
+    <div class="description-header">
+        <h3>Project Overview</h3>
+    </div>
+    <div class="description-content">
+        <div class="description-item">
+            <h4><i class="fas fa-microchip"></i> Hardware Architecture</h4>
+            <p>Dual STM32 MCUs for robust control and processing capabilities, enabling precise motion control and real-time decision making.</p>
+        </div>
+        <div class="description-item">
+            <h4><i class="fas fa-camera"></i> Vision System</h4>
+            <p>Integrated camera system for shape and color-based object recognition, providing accurate perception for sorting tasks.</p>
+        </div>
+        <div class="description-item">
+            <h4><i class="fas fa-cogs"></i> Control System</h4>
+            <p>Advanced PID tracking and encoder-based locomotion for smooth and precise movement control.</p>
+        </div>
+        <div class="description-item">
+            <h4><i class="fas fa-brain"></i> Intelligence</h4>
+            <p>Early application of embodied intelligence, demonstrating effective perception-action coordination in real-world scenarios.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Image Grid -->
+<div class="image-grid">
+    {% for img in image_urls %}
+    <div class="image-item">
+        <img src="{{ img }}" class="project-image" alt="Project image {{ loop.index }}">
+        {% if loop.index == 1 %}
+        <div class="image-caption">Front View - Overall Robot Structure</div>
+        {% elif loop.index == 2 %}
+        <div class="image-caption">Top View - Overall Robot Structure</div>
+        {% elif loop.index == 3 %}
+        <div class="image-caption">Gripper - End Effector</div>
+        {% elif loop.index == 4 %}
+        <div class="image-caption">Rotary Platform - 180° Rotation Mechanism</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %} 
