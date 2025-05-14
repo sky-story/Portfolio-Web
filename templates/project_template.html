@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% block title %}{{ project.title }} - Demo{% endblock %}
+
+{% block title %}{{ project.title_zh if lang == 'zh' else project.title }} - Demo{% endblock %}
 
 {% block styles %}
 {{ super() }}
@@ -81,9 +82,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="project-container">
-    <div class="project-title">
-        <h1>{{ project.title }}</h1>
+<div class="container">
+    <div class="project-header">
+        <h1>{{ project.title_zh if lang == 'zh' else project.title }}</h1>
     </div>
     
     {% block project_summary %}{% endblock %}

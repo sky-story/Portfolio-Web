@@ -1,32 +1,30 @@
 {% extends "base.html" %}
 
-{% block title %}Projects - Ningbo Li{% endblock %}
+{% block title %}{{ t['projects_title'] }} - Ningbo Li{% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-md-10 offset-md-1">
-        <h1 class="display-4 mb-4">Projects</h1>
+        <h1 class="display-4 mb-4">{{ t['projects_title'] }}</h1>
         
         <!-- Autonomous Sorting Robot -->
         <div class="card mb-4 project-card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
-                        <h3 class="card-title">Autonomous Sorting and Transport Robot</h3>
+                        <h3 class="card-title">{{ t['autonomous_robot_title'] }}</h3>
                         <p class="card-text">
-                            Built a mobile robot for shape-color based sorting using dual STM32 MCUs, integrating camera, 
-                            PID tracking, and encoder-based locomotion. Early application of embodied intelligence for 
-                            perception-action coordination.
+                            {{ t['autonomous_robot_desc'] }}
                         </p>
                         <div class="mt-3">
                             <span class="badge bg-primary me-2">STM32</span>
-                            <span class="badge bg-primary me-2">Computer Vision</span>
-                            <span class="badge bg-primary me-2">PID Control</span>
+                            <span class="badge bg-primary me-2">{{ t['computer_vision'] }}</span>
+                            <span class="badge bg-primary me-2">{{ t['pid_control'] }}</span>
                         </div>
                     </div>
                     <div class="col-md-4 text-end">
                         <a href="{{ url_for('project_demo', project_key='autonomous-sorting-robot') }}" 
-                           class="btn btn-primary">View Demo</a>
+                           class="btn btn-primary">{{ t['view_demo'] }}</a>
                         <a href="https://github.com/sky-story/Autonomous-Sorting-and-Transport-Robot" 
                            class="btn btn-outline-dark ms-2" target="_blank">GitHub</a>
                     </div>
@@ -39,11 +37,9 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
-                        <h3 class="card-title">Path and Gait Planning for Multi-Locomotion Snake Robot</h3>
+                        <h3 class="card-title">{{ t['snake_robot_title'] }}</h3>
                         <p class="card-text">
-                            Developed a modular snake-like robot with multiple gaits (serpentine, rolling, undulation) 
-                            for environment-adaptive motion planning. Implemented SLAM-based localization and 2D 
-                            occupancy grid mapping using ROS, Gmapping, and LiDAR.
+                            {{ t['snake_robot_desc'] }}
                         </p>
                         <div class="mt-3">
                             <span class="badge bg-primary me-2">ROS</span>
@@ -53,7 +49,7 @@
                     </div>
                     <div class="col-md-4 text-end">
                         <a href="{{ url_for('project_demo', project_key='snake-robot') }}" 
-                           class="btn btn-primary">View Demo</a>
+                           class="btn btn-primary">{{ t['view_demo'] }}</a>
                     </div>
                 </div>
             </div>
@@ -64,21 +60,19 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
-                        <h3 class="card-title">Vision-Based Surface Defect Detection with Edge Deployment</h3>
+                        <h3 class="card-title">{{ t['defect_detection_title'] }}</h3>
                         <p class="card-text">
-                            Developed a real-time defect detection system for aluminum parts, integrating image acquisition, 
-                            live inference, and display modules. Fine-tuned YOLOv5 model, deployed to edge devices using 
-                            TensorRT, achieving 2× speedup in inference.
+                            {{ t['defect_detection_desc'] }}
                         </p>
                         <div class="mt-3">
                             <span class="badge bg-primary me-2">YOLOv5</span>
                             <span class="badge bg-primary me-2">TensorRT</span>
-                            <span class="badge bg-primary me-2">Edge Computing</span>
+                            <span class="badge bg-primary me-2">{{ t['edge_computing'] }}</span>
                         </div>
                     </div>
                     <div class="col-md-4 text-end">
                         <a href="{{ url_for('project_demo', project_key='defect-detection') }}" 
-                           class="btn btn-primary">View Demo</a>
+                           class="btn btn-primary">{{ t['view_demo'] }}</a>
                         <a href="https://github.com/sky-story/Vision-Based-Surface-Defect-Detection-with-Edge-Deployment" 
                            class="btn btn-outline-dark ms-2" target="_blank">GitHub</a>
                     </div>
@@ -91,21 +85,19 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
-                        <h3 class="card-title">Bionic Scorpion Sampling Robot</h3>
+                        <h3 class="card-title">{{ t['bionic_scorpion_title'] }}</h3>
                         <p class="card-text">
-                            Built control software on STM32 for a scorpion-inspired sampling robot with LiDAR and 
-                            motor modules. 2nd Prize (Top 10%) in Sichuan Province at China's Mechanical Innovation 
-                            Design Competition.
+                            {{ t['bionic_scorpion_desc'] }}
                         </p>
                         <div class="mt-3">
                             <span class="badge bg-primary me-2">STM32</span>
                             <span class="badge bg-primary me-2">LiDAR</span>
-                            <span class="badge bg-primary me-2">Robotics</span>
+                            <span class="badge bg-primary me-2">{{ t['robotics'] }}</span>
                         </div>
                     </div>
                     <div class="col-md-4 text-end">
                         <a href="{{ url_for('project_demo', project_key='bionic-scorpion') }}" 
-                           class="btn btn-primary">View Demo</a>
+                           class="btn btn-primary">{{ t['view_demo'] }}</a>
                         <a href="https://github.com/sky-story/Bionic-Scorpion-Sampling-Robot" 
                            class="btn btn-outline-dark ms-2" target="_blank">GitHub</a>
                     </div>
