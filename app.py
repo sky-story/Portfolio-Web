@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)  # 添加密钥用于session
 
 # 项目数据
-projects = {
+projects_data = {
     "autonomous-sorting-robot": {
         "title": "Autonomous Sorting and Transport Robot",
         "title_zh": "自主分拣运输机器人",
@@ -26,7 +26,7 @@ projects = {
         "title": "Path and Gait Planning for Multi-Locomotion Snake Robot",
         "title_zh": "多运动模式蛇形机器人路径与步态规划",
         "overview": "Developed a modular snake-like robot with multiple gaits (serpentine, rolling, undulation) for environment-adaptive motion planning. Implemented SLAM-based localization and 2D occupancy grid mapping using ROS, Gmapping, and LiDAR for real-time navigation. National Student Research Training Program (SRTP) project.",
-        "overview_zh": "开发了一个具有多种步态（蛇形、滚动、波动）的模块化蛇形机器人，用于环境自适应运动规划。使用ROS、Gmapping和激光雷达实现了基于SLAM的定位和二维占用栅格地图构建，用于实时导航。国家级大学生创新创业训练计划项目。",
+        "overview_zh": "开发了一个具有多种步态（蜿蜒、、侧向蜿蜒、行波、侧向翻滚）的模块化蛇形机器人，用于环境自适应运动规划。使用ROS、Gmapping和激光雷达实现了基于SLAM的定位和二维占用栅格地图构建，用于实时导航。国家级大学生创新创业训练计划项目。",
         "media_folder": "snake-robot",
         "images": [
             "images/1.jpg"
@@ -175,7 +175,7 @@ translations = {
         'autonomous_robot_desc': '开发了一个基于形状和颜色的自主移动分拣机器人。采用双STM32微控制器，集成了相机系统、PID跟踪和编码器驱动。该项目展示了早期具身智能的应用，在实际场景中实现了有效的感知-动作协调。',
         
         'snake_robot_title': '多运动模式蛇形机器人路径与步态规划',
-        'snake_robot_desc': '开发了一个具有多种步态（蛇形、滚动、波动）的模块化蛇形机器人，用于环境自适应运动规划。使用ROS、Gmapping和激光雷达实现了基于SLAM的定位和二维占用栅格地图构建，用于实时导航。',
+        'snake_robot_desc': '开发了一个具有多种步态（蜿蜒、、侧向蜿蜒、行波、侧向翻滚）的模块化蛇形机器人，用于环境自适应运动规划。使用ROS、Gmapping和激光雷达实现了基于SLAM的定位和二维占用栅格地图构建，用于实时导航。',
         
         'defect_detection_title': '基于视觉的表面缺陷检测与边缘部署',
         'defect_detection_desc': '开发了一套铝合金零件表面缺陷实时检测系统，集成了图像采集、实时推理和显示模块。基于YOLOv5模型进行微调，使用TensorRT进行边缘设备部署，实现2倍推理加速。',
@@ -207,7 +207,7 @@ translations = {
 
 @app.route('/project/<project_key>')
 def project_demo(project_key):
-    project = projects.get(project_key)
+    project = projects_data.get(project_key)
     if not project:
         abort(404)
     image_urls = [url_for('static', filename=f'projects/{project["media_folder"]}/{img}') for img in project["images"]]
@@ -216,20 +216,20 @@ def project_demo(project_key):
     # 根据项目类型和语言选择不同的模板
     template_map = {
         "autonomous-sorting-robot": {
-            "en": "autonomous_robot_demo.html",
-            "zh": "autonomous_robot_demo_zh.html"
+            "en": "projects/autonomous_robot/demo.html",
+            "zh": "projects/autonomous_robot/demo_zh.html"
         },
         "snake-robot": {
-            "en": "snake_robot_demo.html",
-            "zh": "snake_robot_demo_zh.html"
+            "en": "projects/snake_robot/demo.html",
+            "zh": "projects/snake_robot/demo_zh.html"
         },
         "defect-detection": {
-            "en": "defect_detection_demo.html",
-            "zh": "defect_detection_demo_zh.html"
+            "en": "projects/defect_detection/demo.html",
+            "zh": "projects/defect_detection/demo_zh.html"
         },
         "bionic-scorpion": {
-            "en": "bionic_scorpion_demo.html",
-            "zh": "bionic_scorpion_demo_zh.html"
+            "en": "projects/bionic_scorpion/demo.html",
+            "zh": "projects/bionic_scorpion/demo_zh.html"
         }
     }
     
@@ -240,69 +240,69 @@ def project_demo(project_key):
 @app.route('/')
 def index():
     lang = session.get('lang', 'en')
-    return render_template('index.html', lang=lang, t=translations[lang])
+    return render_template('main/index.html', lang=lang, t=translations[lang])
 
 @app.route('/about')
 def about():
     lang = session.get('lang', 'en')
-    return render_template('about.html', lang=lang, t=translations[lang])
+    return render_template('main/about.html', lang=lang, t=translations[lang])
 
 @app.route('/projects')
-def projects_page():
+def projects():
     lang = session.get('lang', 'en')
-    return render_template('projects.html', projects=projects, lang=lang, t=translations[lang])
+    return render_template('projects/projects.html', lang=lang, t=translations[lang])
 
 @app.route('/skills')
 def skills():
     lang = session.get('lang', 'en')
-    template = 'skills_zh.html' if lang == 'zh' else 'skills.html'
+    template = 'main/skills_zh.html' if lang == 'zh' else 'main/skills.html'
     return render_template(template, lang=lang, t=translations[lang])
 
 @app.route('/contact')
 def contact():
     lang = session.get('lang', 'en')
-    template = 'contact_zh.html' if lang == 'zh' else 'contact.html'
+    template = 'main/contact_zh.html' if lang == 'zh' else 'main/contact.html'
     return render_template(template, lang=lang, t=translations[lang])
 
 @app.route('/defect-detection')
 def defect_detection():
     lang = session.get('lang', 'en')
-    project = projects['defect-detection']
+    project = projects_data['defect-detection']
     t = translations[lang]
     return render_template('defect_detection_demo.html', project=project, t=t, lang=lang)
 
 @app.route('/defect-detection-zh')
 def defect_detection_zh():
     lang = session.get('lang', 'zh')
-    project = projects['defect-detection']
+    project = projects_data['defect-detection']
     t = translations[lang]
     return render_template('defect_detection_demo_zh.html', project=project, t=t, lang=lang)
 
 @app.route('/autonomous-sorting-robot')
 def autonomous_robot():
     lang = session.get('lang', 'en')
-    project = projects['autonomous-sorting-robot']
+    project = projects_data['autonomous-sorting-robot']
     t = translations[lang]
     return render_template('autonomous_robot_demo.html', project=project, t=t, lang=lang)
 
 @app.route('/autonomous-sorting-robot-zh')
 def autonomous_robot_zh():
     lang = session.get('lang', 'zh')
-    project = projects['autonomous-sorting-robot']
+    project = projects_data['autonomous-sorting-robot']
     t = translations[lang]
     return render_template('autonomous_robot_demo_zh.html', project=project, t=t, lang=lang)
 
 @app.route('/snake-robot')
 def snake_robot():
     lang = session.get('lang', 'en')
-    project = projects['snake-robot']
+    project = projects_data['snake-robot']
     t = translations[lang]
     return render_template('snake_robot_demo.html', project=project, t=t, lang=lang)
 
 @app.route('/snake-robot-zh')
 def snake_robot_zh():
     lang = session.get('lang', 'zh')
-    project = projects['snake-robot']
+    project = projects_data['snake-robot']
     t = translations[lang]
     return render_template('snake_robot_demo_zh.html', project=project, t=t, lang=lang)
 
