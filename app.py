@@ -269,42 +269,48 @@ def defect_detection():
     lang = session.get('lang', 'en')
     project = projects_data['defect-detection']
     t = translations[lang]
-    return render_template('defect_detection_demo.html', project=project, t=t, lang=lang)
+    template = "projects/defect_detection/demo.html" if lang == 'en' else "projects/defect_detection/demo_zh.html"
+    return render_template(template, project=project, t=t, lang=lang)
 
 @app.route('/defect-detection-zh')
 def defect_detection_zh():
     lang = session.get('lang', 'zh')
     project = projects_data['defect-detection']
     t = translations[lang]
-    return render_template('defect_detection_demo_zh.html', project=project, t=t, lang=lang)
+    template = "projects/defect_detection/demo_zh.html"
+    return render_template(template, project=project, t=t, lang=lang)
 
 @app.route('/autonomous-sorting-robot')
 def autonomous_robot():
     lang = session.get('lang', 'en')
     project = projects_data['autonomous-sorting-robot']
     t = translations[lang]
-    return render_template('autonomous_robot_demo.html', project=project, t=t, lang=lang)
+    template = "projects/autonomous_robot/demo.html" if lang == 'en' else "projects/autonomous_robot/demo_zh.html"
+    return render_template(template, project=project, t=t, lang=lang)
 
 @app.route('/autonomous-sorting-robot-zh')
 def autonomous_robot_zh():
     lang = session.get('lang', 'zh')
     project = projects_data['autonomous-sorting-robot']
     t = translations[lang]
-    return render_template('autonomous_robot_demo_zh.html', project=project, t=t, lang=lang)
+    template = "projects/autonomous_robot/demo_zh.html"
+    return render_template(template, project=project, t=t, lang=lang)
 
 @app.route('/snake-robot')
 def snake_robot():
     lang = session.get('lang', 'en')
     project = projects_data['snake-robot']
     t = translations[lang]
-    return render_template('snake_robot_demo.html', project=project, t=t, lang=lang)
+    template = "projects/snake_robot/demo.html" if lang == 'en' else "projects/snake_robot/demo_zh.html"
+    return render_template(template, project=project, t=t, lang=lang)
 
 @app.route('/snake-robot-zh')
 def snake_robot_zh():
     lang = session.get('lang', 'zh')
     project = projects_data['snake-robot']
     t = translations[lang]
-    return render_template('snake_robot_demo_zh.html', project=project, t=t, lang=lang)
+    template = "projects/snake_robot/demo_zh.html"
+    return render_template(template, project=project, t=t, lang=lang)
 
 @app.route('/switch_language/<lang>')
 def switch_language(lang):
